@@ -92,10 +92,10 @@ angular.module('datePicker').factory('datePickerUtils', function () {
         actualOffset;
 
       for (var i = 0; i < 7; i++) {
-        pushedDate = createNewDate(year, month, day, 0 - offset, 0, false);
+        pushedDate = createNewDate(year, month, day + 1, 0 - offset, 0, false);
         actualOffset = pushedDate.utcOffset() / 60;
         if (actualOffset !== offset) {
-          pushedDate = createNewDate(year, month, day, 0 - actualOffset, 0, false);
+          pushedDate = createNewDate(year, month, day + 1, 0 - actualOffset, 0, false);
         }
         days.push(pushedDate);
         day++;
@@ -193,8 +193,8 @@ angular.module('datePicker').factory('datePickerUtils', function () {
       if (tz) {
         return moment.tz(m, tz);
       } else {
-        //If input is a moment, and we have no TZ info, we need to remove TZ 
-        //info from the moment, otherwise the newly created moment will take 
+        //If input is a moment, and we have no TZ info, we need to remove TZ
+        //info from the moment, otherwise the newly created moment will take
         //the timezone of the input moment. The easiest way to do that is to
         //take the unix timestamp, and use that to create a new moment.
         //The new moment will use the local timezone of the user machine.
