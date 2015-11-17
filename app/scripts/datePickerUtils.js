@@ -89,10 +89,10 @@ angular.module('datePicker').factory('datePickerUtils', function () {
         actualOffset;
 
       for (var i = 0; i < 7; i++) {
-        pushedDate = createNewDate(year, month, day + 1, 0 - offset, 0, false);
+        pushedDate = createNewDate(year, month, day, 0 - offset, 0, false);
         actualOffset = pushedDate.utcOffset() / 60;
         if (actualOffset !== offset) {
-          pushedDate = createNewDate(year, month, day + 1, 0 - actualOffset, 0, false);
+          pushedDate = createNewDate(year, month, day, 0 - actualOffset, 0, false);
         }
         days.push(pushedDate);
         day++;
